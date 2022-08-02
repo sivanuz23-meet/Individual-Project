@@ -1,27 +1,48 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Signin</title>
-    <style type="text/css">
-        .center{
-            text-align: center;
-        }
-    </style>
+<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom Theme files -->
+<!-- web font -->
+<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+<!-- //web font -->
 </head>
 <body>
-    <div class = "center">
-        <form action="/signin" method ='POST'>
-            <h1>Enter Email</h1>
-            <br><br>
-            <input type="Email" name="email">
-            <br><br>
-            <h1>Enter Password</h1>
-            <br><br>
-            <input type="Password" name="password">
-            <input type="submit" name="submit">
-
-</div>
+    <!-- main -->
+    <div class="main-w3layouts wrapper">
+        <h1>Login</h1>
+        <div class="main-agileinfo">
+            <div class="agileits-top">
+                <form action="/signin" method="post">
+                    <input class="text" type="text" name="Username" placeholder="Username" required="">
+                    <input class="text email" type="email" name="email" placeholder="Email" required="">
+                    <input class="text" type="password" name="password" placeholder="Password" required="">
+                    <div class="wthree-text">
+                        <label class="anim">
+                        <div class="clear"> </div>
+                    </div>
+                    <input type="submit" name = "submit" value = "Login!">
+                </form>
+        </div>
+        <ul class="colorlib-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <!-- //main -->
 </body>
 </html>

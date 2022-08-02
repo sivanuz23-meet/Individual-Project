@@ -11,8 +11,6 @@ config = {
 
   "authDomain": "individual-project-a2091.firebaseapp.com",
 
-  "databaseURL": "https://individual-project-a2091-default-rtdb.europe-west1.firebasedatabase.app",
-
   "projectId": "individual-project-a2091",
 
   "storageBucket": "individual-project-a2091.appspot.com",
@@ -21,12 +19,13 @@ config = {
 
   "appId": "1:422798657909:web:fc4cac3e10d4e59a7a2b3c",
 
-  "measurementId": "G-R71QNN6H3L"
+  "measurementId": "G-R71QNN6H3L", "databaseURL": "https://individual-project-a2091-default-rtdb.europe-west1.firebasedatabase.app/",
+
 }
 
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
-db = database.firebase()
+db = firebase.database()
 
 @app.route('/', methods=['GET', 'POST'])
 def signup():
@@ -36,6 +35,7 @@ def signup():
 		password = request.form['password']
 		try:
 			login_session['user'] = auth.create_user_with_email_and_password(email, password)
+
 			return redirect(url_for('home'))
 		except:
 			error = "Authentication failed"
@@ -49,7 +49,7 @@ def signin():
 		email = request.form['email']
 		password = request.form['password']
 		try:
-			login_session['user'] = auth.signin_with_user_email_and_password(email, password)
+			login_session['user'] = auth.sign_in_with_email_and_password(email, password)
 			return redirect(url_for('home'))
 		except:
 			error = "Authentication failed"
