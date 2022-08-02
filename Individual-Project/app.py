@@ -60,6 +60,10 @@ def signin():
 def home():
 	return render_template('home.html')
 
+@app.route('/programming', methods=['GET', 'POST'])
+def programming():
+	return render_template('programming.html')
+
 
 if __name__ == '__main__':
 	app.run(debug=True)
