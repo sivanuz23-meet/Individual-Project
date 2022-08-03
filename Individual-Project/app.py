@@ -33,9 +33,10 @@ def signup():
 	if request.method == 'POST':
 		email = request.form['email']
 		password = request.form['password']
+		user = {"email": email, "password": password, "username" : request.form['Username']}
 		try:
 			login_session['user'] = auth.create_user_with_email_and_password(email, password)
-
+			db.child('Users').child(login_session['user']['localId']).set(user)
 			return redirect(url_for('home'))
 		except:
 			error = "Authentication failed"
@@ -50,7 +51,6 @@ def signin():
 		password = request.form['password']
 		try:
 			login_session['user'] = auth.sign_in_with_email_and_password(email, password)
-			db.child['Users'].child(login_session['user']['localId']).set(user)
 			return redirect(url_for('home'))
 		except:
 			error = "Authentication failed"
@@ -61,14 +61,24 @@ def signin():
 def home():
 	return render_template('home.html')
 
+
+@app.route('/profile', methods=['GET', 'POST'])
+def profiles():
+	return render_template('profile.html')
+
 @app.route('/programming', methods=['GET', 'POST'])
 def programming():
 	if request.method == 'POST':
-		message = {"msg" : request.form['msg'], "uid": login_session['user']['localId'] }
+		user = db.child("Users").child(login_session['user']['localId']).get().val()
+		username=user['username']
+		message = {"msg" : request.form['msg'], "uid": login_session['user']['localId'], "username": username  }
 		db.child('Messages').push(message)
 		return render_template('programming.html', message = db.child('Messages').get().val())
 	return render_template('programming.html')
-
-
+@app.route("/signout")
+def signout():
+	login_session['user'] = None
+	auth.current_user = None
+	return redirect(url_for('signin'))
 if __name__ == '__main__':
 	app.run(debug=True)

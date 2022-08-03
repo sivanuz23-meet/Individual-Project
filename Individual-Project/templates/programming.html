@@ -5,21 +5,207 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
 	<style type="text/css">
-		.center{
-			text-align: center;
-		}
+		.navbar {
+  overflow: hidden;
+  background-color: mediumaquamarine;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.center{
+  text-align: center;
+}
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+#signout{
+  float:  right;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: lightseagreen;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: mediumaquamarine;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: lightseagreen;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+
+html {
+height: 100%;
+background:
+  linear-gradient(
+    greenyellow,
+    transparent
+  ),
+  linear-gradient(
+    90deg,
+    skyblue,
+    transparent
+  ),
+  linear-gradient(
+    -90deg,
+    lawngreen,
+    transparent
+  );
+  
+background-blend-mode: screen;
+}
+
+.submit{
+  background-color: mediumaquamarine;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+
+
+
+.speech {
+    position: relative;
+    background: mediumaquamarine;
+    color: #317787;
+    display: inline-block;
+    border-radius: 0;
+    padding: 12px 20px;
+}
+.speech:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 0;
+    top: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-right: 7px solid mediumaquamarine;
+    margin: 15px 0 0 -6px;
+}
+
+.speech .media-heading {
+    font-size: 1.2em;
+    color: #317787;
+    display: block;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    font-weight: 300;
+}
+
+
+
+
+
+
+.form-control {
+    font-size: 20px;
+    height: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    border: 1px solid black;
+    transition-duration: .5s;
+}
+
 	</style>
 </head>
 <body>
+
+<div class="navbar">
+  <a href="/home">Home</a>
+  <a href="/programming">Programming</a>
+  <a href="">Tutoring</a>
+  <a href="/signout" id = "signout">Sign Out</a>
+  <div class="dropdown">
+    <button class="dropbtn">Other
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="">General Forum</a>
+      <a href="#">About Us</a>
+      <a href="#">Help</a>
+      <a href="#">Contact Us</a>
+    </div>
+  </div> 
+</div>
+<br><br><br>
 	<div class="center">
+		<h1>Welcome to the Programming Forum</h1>
+		<br><br>
 	<form action="/programming" method="POST">
-		<input type="text" name="msg">
-		<input type="submit" hidden />
+    				<div class="row">
+    						<input type="text" placeholder="Enter your text..." class="form-control chat-input" name = "msg">
+    			</div>
+    					<div class="row">
+    						<br><br>
+    						<input class="submit" type="submit" value="Send">
+    					</div>
+    					<br>
+    				
 	</form>
 	{%for i in message%}
-	<h1>{{message[i][uid]}}</h1>
-	<h1>{{message[i][msg]}}</h1>
+	<div class="center">
+    	<div class="speech">
+    		<a href="/profile" class="media-heading">{{message[i]['username']}}</a>
+    			<p>{{message[i]['msg']}}</p>
+    	</div>
+    	</div>
+    	<br><br>
 	{%endfor%}
+
+
 </div>
 
 
