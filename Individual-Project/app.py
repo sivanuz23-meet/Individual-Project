@@ -67,22 +67,18 @@ def profiles(name):
 	message = db.child('Messages').get().val()
 	tutor = db.child('Tutoring').get().val()
 	general = db.child('General').get().val()
-	try:
-		for i in message:
-			if message[i]["username"]==name:
-				user = message.child(login_session['user']['localId']).get().val()
-				email = user['email']
-				return render_template('profile.html', name = name, email = email )
-		for i in tutor:
-			if tutor[i]["username"]==name:
-				user = tutor.child(login_session['user']['localId']).get().val()
-				email = user['email']
-				return render_template('profile.html', name = name, email = email )
-		for i in general:
-			if general[i]["username"]==name:
-				user = general.child(login_session['user']['localId']).get().val()
-				email = user['email']
-				return render_template('profile.html', name = name, email = email )
+	for i in message:
+		if message[i]["username"]==name:
+			email = message[i]["email"]
+			return render_template('profile.html', name = name, email = email )
+	for i in tutor:
+		if tutor[i]["username"]==name:
+			email = tutor[i]['email']
+			return render_template('profile.html', name = name, email = email )
+	for i in general:
+		if general[i]["username"]==name:
+			email = general[i]['email']
+			return render_template('profile.html', name = name, email = email )
 	return redirect(url_for('home'))
 
 @app.route('/programming', methods=['GET', 'POST'])
@@ -90,7 +86,8 @@ def programming():
 	if request.method == 'POST':
 		user = db.child("Users").child(login_session['user']['localId']).get().val()
 		username=user['username']
-		message = {"msg" : request.form['msg'], "uid": login_session['user']['localId'], "username": username  }
+		email = user['email']
+		message = {"msg" : request.form['msg'], "uid": login_session['user']['localId'], "username": username, "email": email  }
 		db.child('Messages').push(message)
 		return render_template('programming.html', message = db.child('Messages').get().val())
 	return render_template('programming.html')
@@ -100,7 +97,8 @@ def tutoring():
 	if request.method == 'POST':
 		user = db.child("Users").child(login_session['user']['localId']).get().val()
 		username=user['username']
-		tutor = {"teach" : request.form['teach'], "uid": login_session['user']['localId'], "username": username  }
+		email = user['email']
+		tutor = {"teach" : request.form['teach'], "uid": login_session['user']['localId'], "username": username, "email": email  }
 		db.child('Tutoring').push(tutor)
 		return render_template('tutoring.html', tutor = db.child('Tutoring').get().val())
 	return render_template('tutoring.html')	
@@ -110,7 +108,8 @@ def general():
 	if request.method == 'POST':
 		user = db.child("Users").child(login_session['user']['localId']).get().val()
 		username=user['username']
-		general = {"gen" : request.form['gen'], "uid": login_session['user']['localId'], "username": username  }
+		email = user['email']
+		general = {"gen" : request.form['gen'], "uid": login_session['user']['localId'], "username": username, "email": email  }
 		db.child('General').push(general)
 		return render_template('general.html', general = db.child('General').get().val())
 	return render_template('general.html')
