@@ -119,5 +119,15 @@ def signout():
 	login_session['user'] = None
 	auth.current_user = None
 	return redirect(url_for('signin'))
+
+
+@app.route('/help', methods=['GET', 'POST'])
+def help():
+	return render_template('help.html') 
+
+@app.route('/about', methods=['GET', 'POST'])
+def about():
+	return render_template('about.html')
+
 if __name__ == '__main__':
 	app.run(debug=True)
