@@ -50,6 +50,7 @@ def signin():
 		password = request.form['password']
 		try:
 			login_session['user'] = auth.sign_in_with_email_and_password(email, password)
+			db.child['Users'].child(login_session['user']['localId']).set(user)
 			return redirect(url_for('home'))
 		except:
 			error = "Authentication failed"
@@ -62,6 +63,10 @@ def home():
 
 @app.route('/programming', methods=['GET', 'POST'])
 def programming():
+	if request.method == 'POST':
+		message = {"msg" : request.form['msg'], "uid": login_session['user']['localId'] }
+		db.child('Messages').push(message)
+		return render_template('programming.html', message = db.child('Messages').get().val())
 	return render_template('programming.html')
 
 
