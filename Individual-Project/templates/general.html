@@ -182,11 +182,11 @@ background-blend-mode: screen;
 </div>
 <br><br><br>
 	<div class="center">
-		<h1>Welcome to the Programming Forum</h1>
+		<h1>Welcome to the General Forum</h1>
 		<br><br>
-	<form action="/programming" method="POST">
+	<form action="/general" method="POST">
     				<div class="row">
-    						<input type="text" placeholder="Enter your text..." class="form-control chat-input" name = "msg">
+    						<input type="text" placeholder="Enter your text..." class="form-control chat-input" name = "gen">
     			</div>
     					<div class="row">
     						<br><br>
@@ -195,11 +195,11 @@ background-blend-mode: screen;
     					<br>
     				
 	</form>
-	{%for i in message%}
+	{%for i in general%}
 	<div class="center">
     	<div class="speech">
-    		<a href="/profile/{{message[i]['username']}}" class="media-heading">{{message[i]['username']}}</a>
-    			<p>{{message[i]['msg']}}</p>
+    		<a href="/profile/{{general[i]['username']}}" class="media-heading">{{general[i]['username']}}</a>
+    			<p>{{general[i]['gen']}}</p>
     	</div>
     	</div>
     	<br><br>
