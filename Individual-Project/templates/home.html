@@ -2,13 +2,15 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link href="static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+
 <style type="text/css">
     html {
 height: 100%;
 background:
   linear-gradient(
-    greenyellow,
+    yellowgreen,
     transparent
   ),
   linear-gradient(
@@ -18,12 +20,83 @@ background:
   ),
   linear-gradient(
     -90deg,
-    lawngreen,
+    lightcoral,
     transparent
   );
   
 background-blend-mode: screen;
 }
+
+.navbar {
+  overflow: hidden;
+  background-color: mediumaquamarine;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.center{
+  text-align: center;
+}
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+#signout{
+  float:  right;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: lightseagreen;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: mediumaquamarine;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: lightseagreen;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+
 </style>
 </head>
 <body>
@@ -46,8 +119,22 @@ background-blend-mode: screen;
   </div> 
 </div>
 <div class= "center">
-    <h1>Welcome to Connections</h1>
+    <h1 style="font-size:50px;">Welcome to Connections<br><br></h1>
+   <h2 > If you need help with a certain online service such as programming or tutoring, just ask for it!<br><br>
+    If you want to offer help, you will easily find a job in our forums!</h2>
 </div>
+<ul class="colorlib-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
 
 
 
