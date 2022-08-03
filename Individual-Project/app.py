@@ -64,9 +64,26 @@ def home():
 
 @app.route('/profile/<string:name>', methods=['GET', 'POST'])
 def profiles(name):
-	user = db.child("Users").child(login_session['user']['localId']).get().val()
-	email = user['email']
-	return render_template('profile.html', name = name, email = email )
+	message = db.child('Messages').get().val()
+	tutor = db.child('Tutoring').get().val()
+	general = db.child('General').get().val()
+	try:
+		for i in message:
+			if message[i]["username"]==name:
+				user = message.child(login_session['user']['localId']).get().val()
+				email = user['email']
+				return render_template('profile.html', name = name, email = email )
+		for i in tutor:
+			if tutor[i]["username"]==name:
+				user = tutor.child(login_session['user']['localId']).get().val()
+				email = user['email']
+				return render_template('profile.html', name = name, email = email )
+		for i in general:
+			if general[i]["username"]==name:
+				user = general.child(login_session['user']['localId']).get().val()
+				email = user['email']
+				return render_template('profile.html', name = name, email = email )
+	return redirect(url_for('home'))
 
 @app.route('/programming', methods=['GET', 'POST'])
 def programming():
@@ -84,7 +101,7 @@ def tutoring():
 		user = db.child("Users").child(login_session['user']['localId']).get().val()
 		username=user['username']
 		tutor = {"teach" : request.form['teach'], "uid": login_session['user']['localId'], "username": username  }
-		db.child('Tutoring').push(message)
+		db.child('Tutoring').push(tutor)
 		return render_template('tutoring.html', tutor = db.child('Tutoring').get().val())
 	return render_template('tutoring.html')	
 
