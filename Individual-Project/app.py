@@ -84,7 +84,7 @@ def tutoring():
 		user = db.child("Users").child(login_session['user']['localId']).get().val()
 		username=user['username']
 		tutor = {"teach" : request.form['teach'], "uid": login_session['user']['localId'], "username": username  }
-		db.child('Tutoring').push(tutor)
+		db.child('Tutoring').push(message)
 		return render_template('tutoring.html', tutor = db.child('Tutoring').get().val())
 	return render_template('tutoring.html')	
 
