@@ -3,9 +3,52 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<style type="text/css">
+    html {
+height: 100%;
+background:
+  linear-gradient(
+    greenyellow,
+    transparent
+  ),
+  linear-gradient(
+    90deg,
+    skyblue,
+    transparent
+  ),
+  linear-gradient(
+    -90deg,
+    lawngreen,
+    transparent
+  );
+  
+background-blend-mode: screen;
+}
+</style>
 	<title>Profile Page</title>
 </head>
 <body>
-<h1>Profile</h1>
+	<div class="navbar">
+  <a href="/home">Home</a>
+  <a href="/programming">Programming</a>
+  <a href="">Tutoring</a>
+  <a href="/signout" id = "signout">Sign Out</a>
+  <div class="dropdown">
+    <button class="dropbtn">Other
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="">General Forum</a>
+      <a href="#">About Us</a>
+      <a href="#">Help</a>
+      <a href="#">Contact Us</a>
+    </div>
+  </div> 
+</div>
+	<div class = "center">
+		<h1>You have reached {{name}}'s Profile</h1>
+		<h1>Contact Information: {{email}}</h1>
+	</div>
 </body>
 </html>

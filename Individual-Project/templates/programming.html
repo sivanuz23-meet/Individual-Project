@@ -198,7 +198,7 @@ background-blend-mode: screen;
 	{%for i in message%}
 	<div class="center">
     	<div class="speech">
-    		<a href="/profile" class="media-heading">{{message[i]['username']}}</a>
+    		<a href="/profile/{{message[i]['username']}}" class="media-heading">{{message[i]['username']}}</a>
     			<p>{{message[i]['msg']}}</p>
     	</div>
     	</div>

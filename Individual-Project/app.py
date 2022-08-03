@@ -62,9 +62,11 @@ def home():
 	return render_template('home.html')
 
 
-@app.route('/profile', methods=['GET', 'POST'])
-def profiles():
-	return render_template('profile.html')
+@app.route('/profile/<string:name>', methods=['GET', 'POST'])
+def profiles(name):
+	user = db.child("Users").child(login_session['user']['localId']).get().val()
+	email = user['email']
+	return render_template('profile.html', name = name, email = email )
 
 @app.route('/programming', methods=['GET', 'POST'])
 def programming():
