@@ -3,6 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+
 <style type="text/css">
     html {
 height: 100%;
@@ -96,7 +98,13 @@ background-blend-mode: screen;
 .center{
 	text-align: center;
 }
-
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
 
 </style>
 	<title>Profile Page</title>
@@ -121,9 +129,11 @@ background-blend-mode: screen;
   </div> 
 </div>
 	<div class = "center">
+		<div class = "card">
 		<h1>You have reached {{name}}'s Profile</h1>
 		<h1>Contact Information: {{email}}</h1>
 	</div>
+</div>
 
 </body>
 </html>
