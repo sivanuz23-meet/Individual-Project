@@ -202,12 +202,18 @@ background-blend-mode: screen;
 	{%for i in general%}
 	<div class="center">
     	<div class="speech">
+        {%if general[i]['gen'] != ""%}
     		<a href="/profile/{{general[i]['username']}}" class="media-heading">{{general[i]['username']}}</a>
     			<p>{{general[i]['gen']}}</p>
+        
     	</div>
     	</div>
     	<br><br>
+      {%else%}
+
+  {%endif%}
 	{%endfor%}
+
 <ul class="colorlib-bubbles">
             <li></li>
             <li></li>

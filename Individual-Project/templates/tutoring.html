@@ -201,11 +201,16 @@ background-blend-mode: screen;
 	{%for i in tutor%}
 	<div class="center">
     	<div class="speech">
-    		<a href="/profile/{{tutor[i]['username']}}" class="media-heading">{{tutor[i]['username']}}</a>
-    			<p>{{tutor[i]['teach']}}</p>
-    	</div>
-    	</div>
-    	<br><br>
+    		    {%if tutor[i]['teach'] != ""%}
+        <a href="/profile/{{tutor[i]['username']}}" class="media-heading">{{tutor[i]['username']}}</a>
+          <p>{{tutor[i]['teach']}}</p>
+        
+      </div>
+      </div>
+      <br><br>
+      {%else%}
+
+  {%endif%}
 	{%endfor%}
 <ul class="colorlib-bubbles">
             <li></li>

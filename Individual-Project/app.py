@@ -87,10 +87,11 @@ def programming():
 		user = db.child("Users").child(login_session['user']['localId']).get().val()
 		username=user['username']
 		email = user['email']
-		message = {"msg" : request.form['msg'], "uid": login_session['user']['localId'], "username": username, "email": email  }
-		db.child('Messages').push(message)
-		return render_template('programming.html', message = db.child('Messages').get().val())
-	return render_template('programming.html')
+		if request.form['msg'] != "":
+			message = {"msg" : request.form['msg'], "uid": login_session['user']['localId'], "username": username, "email": email  }
+			db.child('Messages').push(message)
+			return render_template('programming.html', message = db.child('Messages').get().val())
+	return render_template('programming.html', message = db.child('Messages').get().val())
 
 @app.route('/tutoring', methods=['GET', 'POST'])
 def tutoring():
@@ -98,10 +99,11 @@ def tutoring():
 		user = db.child("Users").child(login_session['user']['localId']).get().val()
 		username=user['username']
 		email = user['email']
-		tutor = {"teach" : request.form['teach'], "uid": login_session['user']['localId'], "username": username, "email": email  }
-		db.child('Tutoring').push(tutor)
-		return render_template('tutoring.html', tutor = db.child('Tutoring').get().val())
-	return render_template('tutoring.html')	
+		if request.form['teach'] != "":
+			tutor = {"teach" : request.form['teach'], "uid": login_session['user']['localId'], "username": username, "email": email  }
+			db.child('Tutoring').push(tutor)
+			return render_template('tutoring.html', tutor = db.child('Tutoring').get().val())
+	return render_template('tutoring.html', tutor = db.child('Tutoring').get().val())	
 
 @app.route('/general', methods=['GET', 'POST'])
 def general():
@@ -109,10 +111,11 @@ def general():
 		user = db.child("Users").child(login_session['user']['localId']).get().val()
 		username=user['username']
 		email = user['email']
-		general = {"gen" : request.form['gen'], "uid": login_session['user']['localId'], "username": username, "email": email  }
-		db.child('General').push(general)
-		return render_template('general.html', general = db.child('General').get().val())
-	return render_template('general.html')
+		if request.form['gen'] != "":
+			general = {"gen" : request.form['gen'], "uid": login_session['user']['localId'], "username": username, "email": email  }
+			db.child('General').push(general)
+			return render_template('general.html', general = db.child('General').get().val())
+	return render_template('general.html', general = db.child('General').get().val())
 
 @app.route("/signout")
 def signout():

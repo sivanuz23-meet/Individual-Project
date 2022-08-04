@@ -201,11 +201,16 @@ background-blend-mode: screen;
 	{%for i in message%}
 	<div class="center">
     	<div class="speech">
+        {%if message[i]['msg'] != ""%}
     		<a href="/profile/{{message[i]['username']}}" class="media-heading">{{message[i]['username']}}</a>
     			<p>{{message[i]['msg']}}</p>
+        
     	</div>
     	</div>
     	<br><br>
+      {%else%}
+
+  {%endif%}
 	{%endfor%}
 	<ul class="colorlib-bubbles">
             <li></li>
